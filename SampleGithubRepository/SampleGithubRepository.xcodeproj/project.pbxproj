@@ -10,6 +10,12 @@
 		4DB1668C28105A440024F368 /* github.plist in Resources */ = {isa = PBXBuildFile; fileRef = 4DB1668B28105A440024F368 /* github.plist */; };
 		4DB1669028105ABF0024F368 /* Bundle+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DB1668F28105ABF0024F368 /* Bundle+.swift */; };
 		4DB166942810646C0024F368 /* MKUtils in Frameworks */ = {isa = PBXBuildFile; productRef = 4DB166932810646C0024F368 /* MKUtils */; };
+		4DB166A9281067C30024F368 /* SearchRepositoryPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DB166A3281067C30024F368 /* SearchRepositoryPresenter.swift */; };
+		4DB166AA281067C30024F368 /* SearchRepositoryWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DB166A4281067C30024F368 /* SearchRepositoryWorker.swift */; };
+		4DB166AB281067C30024F368 /* SearchRepositoryRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DB166A5281067C30024F368 /* SearchRepositoryRouter.swift */; };
+		4DB166AC281067C30024F368 /* SearchRepositoryModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DB166A6281067C30024F368 /* SearchRepositoryModels.swift */; };
+		4DB166AD281067C30024F368 /* SearchRepositoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DB166A7281067C30024F368 /* SearchRepositoryViewController.swift */; };
+		4DB166AE281067C30024F368 /* SearchRepositoryInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DB166A8281067C30024F368 /* SearchRepositoryInteractor.swift */; };
 		4DD53E502810579F00F3682D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DD53E4F2810579F00F3682D /* AppDelegate.swift */; };
 		4DD53E522810579F00F3682D /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DD53E512810579F00F3682D /* SceneDelegate.swift */; };
 		4DD53E542810579F00F3682D /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DD53E532810579F00F3682D /* ViewController.swift */; };
@@ -21,6 +27,12 @@
 		4DB1668B28105A440024F368 /* github.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = github.plist; sourceTree = "<group>"; };
 		4DB1668F28105ABF0024F368 /* Bundle+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Bundle+.swift"; sourceTree = "<group>"; };
 		4DB16692281064640024F368 /* MKUtils */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = MKUtils; path = ../MKUtils; sourceTree = "<group>"; };
+		4DB166A3281067C30024F368 /* SearchRepositoryPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchRepositoryPresenter.swift; sourceTree = "<group>"; };
+		4DB166A4281067C30024F368 /* SearchRepositoryWorker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchRepositoryWorker.swift; sourceTree = "<group>"; };
+		4DB166A5281067C30024F368 /* SearchRepositoryRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchRepositoryRouter.swift; sourceTree = "<group>"; };
+		4DB166A6281067C30024F368 /* SearchRepositoryModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchRepositoryModels.swift; sourceTree = "<group>"; };
+		4DB166A7281067C30024F368 /* SearchRepositoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchRepositoryViewController.swift; sourceTree = "<group>"; };
+		4DB166A8281067C30024F368 /* SearchRepositoryInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchRepositoryInteractor.swift; sourceTree = "<group>"; };
 		4DD53E4C2810579F00F3682D /* SampleGithubRepository.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SampleGithubRepository.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4DD53E4F2810579F00F3682D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4DD53E512810579F00F3682D /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -75,6 +87,27 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		4DB16695281065250024F368 /* Scenes */ = {
+			isa = PBXGroup;
+			children = (
+				4DB166962810655D0024F368 /* SearchRepository */,
+			);
+			path = Scenes;
+			sourceTree = "<group>";
+		};
+		4DB166962810655D0024F368 /* SearchRepository */ = {
+			isa = PBXGroup;
+			children = (
+				4DB166A3281067C30024F368 /* SearchRepositoryPresenter.swift */,
+				4DB166A4281067C30024F368 /* SearchRepositoryWorker.swift */,
+				4DB166A5281067C30024F368 /* SearchRepositoryRouter.swift */,
+				4DB166A6281067C30024F368 /* SearchRepositoryModels.swift */,
+				4DB166A7281067C30024F368 /* SearchRepositoryViewController.swift */,
+				4DB166A8281067C30024F368 /* SearchRepositoryInteractor.swift */,
+			);
+			path = SearchRepository;
+			sourceTree = "<group>";
+		};
 		4DD53E432810579F00F3682D = {
 			isa = PBXGroup;
 			children = (
@@ -95,6 +128,7 @@
 		4DD53E4E2810579F00F3682D /* SampleGithubRepository */ = {
 			isa = PBXGroup;
 			children = (
+				4DB16695281065250024F368 /* Scenes */,
 				4DB1668D28105AAD0024F368 /* Utils */,
 				4DB1668A2810582C0024F368 /* AppDelegate */,
 				4DD53E63281057B000F3682D /* Resources */,
@@ -188,10 +222,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4DB166AB281067C30024F368 /* SearchRepositoryRouter.swift in Sources */,
+				4DB166AD281067C30024F368 /* SearchRepositoryViewController.swift in Sources */,
+				4DB166AC281067C30024F368 /* SearchRepositoryModels.swift in Sources */,
 				4DD53E542810579F00F3682D /* ViewController.swift in Sources */,
+				4DB166AA281067C30024F368 /* SearchRepositoryWorker.swift in Sources */,
 				4DB1669028105ABF0024F368 /* Bundle+.swift in Sources */,
 				4DD53E502810579F00F3682D /* AppDelegate.swift in Sources */,
 				4DD53E522810579F00F3682D /* SceneDelegate.swift in Sources */,
+				4DB166AE281067C30024F368 /* SearchRepositoryInteractor.swift in Sources */,
+				4DB166A9281067C30024F368 /* SearchRepositoryPresenter.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

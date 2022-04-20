@@ -17,9 +17,9 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         guard let windowScene = (scene as? UIWindowScene) else { return }
         self.window = UIWindow(windowScene: windowScene)
         self.window!.makeKeyAndVisible()
-        let vc = ViewController()
-        self.window!.rootViewController = vc
-        vc.view.backgroundColor = .yellow
+        let vc = SearchRepositoryViewController()
+        let nav = UINavigationController(rootViewController: vc)
+        self.window!.rootViewController = nav
     }
 
     func sceneDidDisconnect(_ scene: UIScene) {
