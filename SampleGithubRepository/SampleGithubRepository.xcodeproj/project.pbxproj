@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		4DB1668C28105A440024F368 /* github.plist in Resources */ = {isa = PBXBuildFile; fileRef = 4DB1668B28105A440024F368 /* github.plist */; };
 		4DB1669028105ABF0024F368 /* Bundle+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DB1668F28105ABF0024F368 /* Bundle+.swift */; };
+		4DB166942810646C0024F368 /* MKUtils in Frameworks */ = {isa = PBXBuildFile; productRef = 4DB166932810646C0024F368 /* MKUtils */; };
 		4DD53E502810579F00F3682D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DD53E4F2810579F00F3682D /* AppDelegate.swift */; };
 		4DD53E522810579F00F3682D /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DD53E512810579F00F3682D /* SceneDelegate.swift */; };
 		4DD53E542810579F00F3682D /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DD53E532810579F00F3682D /* ViewController.swift */; };
@@ -19,6 +20,7 @@
 /* Begin PBXFileReference section */
 		4DB1668B28105A440024F368 /* github.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = github.plist; sourceTree = "<group>"; };
 		4DB1668F28105ABF0024F368 /* Bundle+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Bundle+.swift"; sourceTree = "<group>"; };
+		4DB16692281064640024F368 /* MKUtils */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = MKUtils; path = ../MKUtils; sourceTree = "<group>"; };
 		4DD53E4C2810579F00F3682D /* SampleGithubRepository.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SampleGithubRepository.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4DD53E4F2810579F00F3682D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4DD53E512810579F00F3682D /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -33,6 +35,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4DB166942810646C0024F368 /* MKUtils in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -64,11 +67,20 @@
 			path = Extensions;
 			sourceTree = "<group>";
 		};
+		4DB16691281064640024F368 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				4DB16692281064640024F368 /* MKUtils */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		4DD53E432810579F00F3682D = {
 			isa = PBXGroup;
 			children = (
 				4DD53E4E2810579F00F3682D /* SampleGithubRepository */,
 				4DD53E4D2810579F00F3682D /* Products */,
+				4DB16691281064640024F368 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -118,6 +130,9 @@
 			dependencies = (
 			);
 			name = SampleGithubRepository;
+			packageProductDependencies = (
+				4DB166932810646C0024F368 /* MKUtils */,
+			);
 			productName = SampleGithubRepository;
 			productReference = 4DD53E4C2810579F00F3682D /* SampleGithubRepository.app */;
 			productType = "com.apple.product-type.application";
@@ -244,7 +259,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 15.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -298,7 +313,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 15.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -384,6 +399,13 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		4DB166932810646C0024F368 /* MKUtils */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = MKUtils;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 4DD53E442810579F00F3682D /* Project object */;
 }

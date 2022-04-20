@@ -4,6 +4,7 @@
 
 
 import UIKit
+import MKUtils
 
 class ViewController: UIViewController {
 
@@ -11,7 +12,7 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         let apiKey = Bundle.main.apiKey(plist: "github")
-        print(apiKey)
+        Debug.print(apiKey)
     }
 
 
