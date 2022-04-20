@@ -6,10 +6,13 @@
 import UIKit
 
 protocol SearchRepositoryPresentationLogic {
-    func presentSomething(response: SearchRepository.Something.Response)
+    func presentFetchReposResult(response: SearchRepository.Search.Response)
+    func presentError(response: SearchRepository.Search.Response)
 }
 
 class SearchRepositoryPresenter: SearchRepositoryPresentationLogic {
+    
+    
     weak var viewController: SearchRepositoryDisplayLogic?
 
     // MARK: Parse and calc respnse from SearchRepositoryInteractor and send simple view model to SearchRepositoryViewController to be displayed
@@ -18,13 +21,16 @@ class SearchRepositoryPresenter: SearchRepositoryPresentationLogic {
         //
     }
     
-    func presentSomething(response: SearchRepository.Something.Response) {
-        let viewModel = SearchRepository.Something.ViewModel()
-        viewController?.displaySomething(viewModel: viewModel)
+    func presentFetchReposResult(response: SearchRepository.Search.Response) {
+        
+        let viewModel = SearchRepository.Search.ViewModel(repos: response.repos, error: nil)
+        viewController?.displayResult(viewModel: viewModel)
+        
     }
-//
-//    func presentSomethingElse(response: SearchRepository.SomethingElse.Response) {
-//        let viewModel = SearchRepository.SomethingElse.ViewModel()
-//        viewController?.displaySomethingElse(viewModel: viewModel)
-//    }
+    
+    func presentError(response: SearchRepository.Search.Response) {
+        let viewModel = SearchRepository.Search.ViewModel(repos: nil, error: response.error)
+        viewController?.displayErrorAlert(viewModel: viewModel)
+    }
+    
 }

@@ -6,8 +6,8 @@
 import UIKit
 
 protocol SearchRepositoryBusinessLogic {
-    func doSomething(request: SearchRepository.Something.Request)
-//    func doSomethingElse(request: SearchRepository.SomethingElse.Request)
+    func fetchRepos(request: SearchRepository.Search.Request)
+
 }
 
 protocol SearchRepositoryDataStore {
@@ -24,19 +24,19 @@ class SearchRepositoryInteractor: SearchRepositoryBusinessLogic, SearchRepositor
     }
     // MARK: Do something (and send response to SearchRepositoryPresenter)
 
-    func doSomething(request: SearchRepository.Something.Request) {
+    func fetchRepos(request: SearchRepository.Search.Request) {
         worker = SearchRepositoryWorker()
-        worker?.doSomeWork()
-
-        let response = SearchRepository.Something.Response()
-        presenter?.presentSomething(response: response)
+        worker?.fetchRepository(name: request.query, page: request.page, completion: { [weak self] result in
+            switch result {
+                case let .success(repo):
+                    let response = SearchRepository.Search.Response(repos: repo)
+                    self?.presenter?.presentFetchReposResult(response: response)
+                    
+                case let .failure(error):
+                    let response = SearchRepository.Search.Response(error: error)
+                    self?.presenter?.presentError(response: response)
+            }
+        })
     }
-//
-//    func doSomethingElse(request: SearchRepository.SomethingElse.Request) {
-//        worker = SearchRepositoryWorker()
-//        worker?.doSomeOtherWork()
-//
-//        let response = SearchRepository.SomethingElse.Response()
-//        presenter?.presentSomethingElse(response: response)
-//    }
+
 }

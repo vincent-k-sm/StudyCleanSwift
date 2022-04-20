@@ -16,6 +16,9 @@
 		4DB166AC281067C30024F368 /* SearchRepositoryModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DB166A6281067C30024F368 /* SearchRepositoryModels.swift */; };
 		4DB166AD281067C30024F368 /* SearchRepositoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DB166A7281067C30024F368 /* SearchRepositoryViewController.swift */; };
 		4DB166AE281067C30024F368 /* SearchRepositoryInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DB166A8281067C30024F368 /* SearchRepositoryInteractor.swift */; };
+		4DB166B128106D860024F368 /* GithubRepositoryDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DB166B028106D860024F368 /* GithubRepositoryDTO.swift */; };
+		4DB166B328106DF10024F368 /* GithubRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DB166B228106DF10024F368 /* GithubRepository.swift */; };
+		4DB166B5281077490024F368 /* APIError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DB166B4281077490024F368 /* APIError.swift */; };
 		4DD53E502810579F00F3682D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DD53E4F2810579F00F3682D /* AppDelegate.swift */; };
 		4DD53E522810579F00F3682D /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DD53E512810579F00F3682D /* SceneDelegate.swift */; };
 		4DD53E59281057A000F3682D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4DD53E58281057A000F3682D /* Assets.xcassets */; };
@@ -32,6 +35,9 @@
 		4DB166A6281067C30024F368 /* SearchRepositoryModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchRepositoryModels.swift; sourceTree = "<group>"; };
 		4DB166A7281067C30024F368 /* SearchRepositoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchRepositoryViewController.swift; sourceTree = "<group>"; };
 		4DB166A8281067C30024F368 /* SearchRepositoryInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchRepositoryInteractor.swift; sourceTree = "<group>"; };
+		4DB166B028106D860024F368 /* GithubRepositoryDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GithubRepositoryDTO.swift; sourceTree = "<group>"; };
+		4DB166B228106DF10024F368 /* GithubRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GithubRepository.swift; sourceTree = "<group>"; };
+		4DB166B4281077490024F368 /* APIError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIError.swift; sourceTree = "<group>"; };
 		4DD53E4C2810579F00F3682D /* SampleGithubRepository.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SampleGithubRepository.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4DD53E4F2810579F00F3682D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4DD53E512810579F00F3682D /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -106,6 +112,16 @@
 			path = SearchRepository;
 			sourceTree = "<group>";
 		};
+		4DB166AF28106D730024F368 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				4DB166B028106D860024F368 /* GithubRepositoryDTO.swift */,
+				4DB166B228106DF10024F368 /* GithubRepository.swift */,
+				4DB166B4281077490024F368 /* APIError.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
 		4DD53E432810579F00F3682D = {
 			isa = PBXGroup;
 			children = (
@@ -126,6 +142,7 @@
 		4DD53E4E2810579F00F3682D /* SampleGithubRepository */ = {
 			isa = PBXGroup;
 			children = (
+				4DB166AF28106D730024F368 /* Models */,
 				4DB16695281065250024F368 /* Scenes */,
 				4DB1668D28105AAD0024F368 /* Utils */,
 				4DB1668A2810582C0024F368 /* AppDelegate */,
@@ -219,9 +236,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4DB166B328106DF10024F368 /* GithubRepository.swift in Sources */,
 				4DB166AB281067C30024F368 /* SearchRepositoryRouter.swift in Sources */,
 				4DB166AD281067C30024F368 /* SearchRepositoryViewController.swift in Sources */,
+				4DB166B128106D860024F368 /* GithubRepositoryDTO.swift in Sources */,
 				4DB166AC281067C30024F368 /* SearchRepositoryModels.swift in Sources */,
+				4DB166B5281077490024F368 /* APIError.swift in Sources */,
 				4DB166AA281067C30024F368 /* SearchRepositoryWorker.swift in Sources */,
 				4DB1669028105ABF0024F368 /* Bundle+.swift in Sources */,
 				4DD53E502810579F00F3682D /* AppDelegate.swift in Sources */,

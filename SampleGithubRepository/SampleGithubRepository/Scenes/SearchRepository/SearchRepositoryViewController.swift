@@ -4,13 +4,16 @@
 //
 
 import UIKit
+import MKUtils
 
 protocol SearchRepositoryDisplayLogic: AnyObject {
-    func displaySomething(viewModel: SearchRepository.Something.ViewModel)
+    func displayResult(viewModel: SearchRepository.Search.ViewModel)
+    func displayErrorAlert(viewModel: SearchRepository.Search.ViewModel)
 //    func displaySomethingElse(viewModel: SearchRepository.SomethingElse.ViewModel)
 }
 
 class SearchRepositoryViewController: UIViewController, SearchRepositoryDisplayLogic {
+   
     var interactor: SearchRepositoryBusinessLogic?
     var router: (NSObjectProtocol & SearchRepositoryRoutingLogic & SearchRepositoryDataPassing)?
 
@@ -30,7 +33,7 @@ class SearchRepositoryViewController: UIViewController, SearchRepositoryDisplayL
     }
     
     deinit {
-        //
+        Debug.print("")
     }
 
     // MARK: - Setup Clean Code Design Pattern 
@@ -48,23 +51,12 @@ class SearchRepositoryViewController: UIViewController, SearchRepositoryDisplayL
         router.dataStore = interactor
     }
 
-    // MARK: - Routing
-
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if let scene = segue.identifier {
-            let selector = NSSelectorFromString("routeTo\(scene)WithSegue:")
-            if let router = router, router.responds(to: selector) {
-                router.perform(selector, with: segue)
-            }
-        }
-    }
-
     // MARK: - View lifecycle
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        doSomething()
-//        doSomethingElse()
+        Debug.print("")
+        self.doSomeThing()
     }
     
     //MARK: - receive events from UI
@@ -81,23 +73,47 @@ class SearchRepositoryViewController: UIViewController, SearchRepositoryDisplayL
     
     // MARK: - request data from SearchRepositoryInteractor
 
-    func doSomething() {
-        let request = SearchRepository.Something.Request()
-        interactor?.doSomething(request: request)
-    }
+//    func doSomething() {
+//        let request = SearchRepository.Search.Request()
+//        interactor?.doSomething(request: request)
+//    }
 //
 //    func doSomethingElse() {
 //        let request = SearchRepository.SomethingElse.Request()
 //        interactor?.doSomethingElse(request: request)
 //    }
 
-    // MARK: - display view model from SearchRepositoryPresenter
+    
+}
 
-    func displaySomething(viewModel: SearchRepository.Something.ViewModel) {
-        //nameTextField.text = viewModel.name
+extension SearchRepositoryViewController {
+    @objc func searchButtonTapped() {
+        self.doSomeThing()
     }
-//
-//    func displaySomethingElse(viewModel: SearchRepository.SomethingElse.ViewModel) {
-//        // do sometingElse with viewModel
-//    }
+}
+
+
+// MARK: - request data from SearchRepositoryInteractor
+extension SearchRepositoryViewController {
+    func doSomeThing() {
+        let request = SearchRepository.Search.Request(query: "rxSwift", page: 1)
+        interactor?.fetchRepos(request: request)
+    }
+}
+
+// MARK: - display view model from SearchRepositoryPresenter
+extension SearchRepositoryViewController {
+    func displayResult(viewModel: SearchRepository.Search.ViewModel) {
+        if let repos = viewModel.repos {
+            Debug.print(repos)
+        }
+        
+    }
+    
+    func displayErrorAlert(viewModel: SearchRepository.Search.ViewModel) {
+        if let error = viewModel.error {
+            UIAlertController.showMessage(error.localizedDescription)
+        }
+        
+    }
 }
