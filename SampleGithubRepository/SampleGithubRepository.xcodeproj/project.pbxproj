@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4DB1668C28105A440024F368 /* github.plist in Resources */ = {isa = PBXBuildFile; fileRef = 4DB1668B28105A440024F368 /* github.plist */; };
+		4DB1669028105ABF0024F368 /* Bundle+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DB1668F28105ABF0024F368 /* Bundle+.swift */; };
 		4DD53E502810579F00F3682D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DD53E4F2810579F00F3682D /* AppDelegate.swift */; };
 		4DD53E522810579F00F3682D /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DD53E512810579F00F3682D /* SceneDelegate.swift */; };
 		4DD53E542810579F00F3682D /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DD53E532810579F00F3682D /* ViewController.swift */; };
@@ -15,6 +17,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		4DB1668B28105A440024F368 /* github.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = github.plist; sourceTree = "<group>"; };
+		4DB1668F28105ABF0024F368 /* Bundle+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Bundle+.swift"; sourceTree = "<group>"; };
 		4DD53E4C2810579F00F3682D /* SampleGithubRepository.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SampleGithubRepository.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4DD53E4F2810579F00F3682D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4DD53E512810579F00F3682D /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -44,6 +48,22 @@
 			path = AppDelegate;
 			sourceTree = "<group>";
 		};
+		4DB1668D28105AAD0024F368 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				4DB1668E28105AB30024F368 /* Extensions */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
+		4DB1668E28105AB30024F368 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				4DB1668F28105ABF0024F368 /* Bundle+.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
 		4DD53E432810579F00F3682D = {
 			isa = PBXGroup;
 			children = (
@@ -63,6 +83,7 @@
 		4DD53E4E2810579F00F3682D /* SampleGithubRepository */ = {
 			isa = PBXGroup;
 			children = (
+				4DB1668D28105AAD0024F368 /* Utils */,
 				4DB1668A2810582C0024F368 /* AppDelegate */,
 				4DD53E63281057B000F3682D /* Resources */,
 				4DD53E532810579F00F3682D /* ViewController.swift */,
@@ -76,6 +97,7 @@
 				4DD53E58281057A000F3682D /* Assets.xcassets */,
 				4DD53E5A281057A000F3682D /* LaunchScreen.storyboard */,
 				4DD53E5D281057A000F3682D /* Info.plist */,
+				4DB1668B28105A440024F368 /* github.plist */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -138,6 +160,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4DB1668C28105A440024F368 /* github.plist in Resources */,
 				4DD53E5C281057A000F3682D /* LaunchScreen.storyboard in Resources */,
 				4DD53E59281057A000F3682D /* Assets.xcassets in Resources */,
 			);
@@ -151,6 +174,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				4DD53E542810579F00F3682D /* ViewController.swift in Sources */,
+				4DB1669028105ABF0024F368 /* Bundle+.swift in Sources */,
 				4DD53E502810579F00F3682D /* AppDelegate.swift in Sources */,
 				4DD53E522810579F00F3682D /* SceneDelegate.swift in Sources */,
 			);
