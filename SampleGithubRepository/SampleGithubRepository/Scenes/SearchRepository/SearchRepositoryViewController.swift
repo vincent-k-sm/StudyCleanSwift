@@ -7,9 +7,8 @@ import UIKit
 import MKUtils
 
 protocol SearchRepositoryDisplayLogic: AnyObject {
-    func displayResult(viewModel: SearchRepository.Search.ViewModel)
+    func displayFetchOrderResult(viewModel: SearchRepository.Search.ViewModel)
     func displayErrorAlert(viewModel: SearchRepository.Search.ViewModel)
-//    func displaySomethingElse(viewModel: SearchRepository.SomethingElse.ViewModel)
 }
 
 class SearchRepositoryViewController: UIViewController, SearchRepositoryDisplayLogic {
@@ -52,50 +51,68 @@ class SearchRepositoryViewController: UIViewController, SearchRepositoryDisplayL
     }
 
     // MARK: - View lifecycle
-
+    var repos: Repositories? = nil
+    
+    lazy var tableView: UITableView = {
+        let v = UITableView()
+        v.delegate = self
+        v.dataSource = self
+        return v
+    }()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         Debug.print("")
-        self.doSomeThing()
+        self.setUI()
+//        self.requestSearchRepos()
     }
-    
-    //MARK: - receive events from UI
-    
-    //@IBOutlet weak var nameTextField: UITextField!
-//
-//    @IBAction func someButtonTapped(_ sender: Any) {
-//
-//    }
-//
-//    @IBAction func otherButtonTapped(_ sender: Any) {
-//
-//    }
-    
-    // MARK: - request data from SearchRepositoryInteractor
-
-//    func doSomething() {
-//        let request = SearchRepository.Search.Request()
-//        interactor?.doSomething(request: request)
-//    }
-//
-//    func doSomethingElse() {
-//        let request = SearchRepository.SomethingElse.Request()
-//        interactor?.doSomethingElse(request: request)
-//    }
-
-    
 }
 
 extension SearchRepositoryViewController {
     @objc func searchButtonTapped() {
-        self.doSomeThing()
+        self.requestSearchRepos()
     }
 }
 
+extension SearchRepositoryViewController {
+    private func setUI() {
+        self.view.addSubview(self.tableView)
+        self.tableView.translatesAutoresizingMaskIntoConstraints = false
+        let tableViewContraints = [
+            self.tableView.topAnchor.constraint(equalTo: self.view.topAnchor),
+            self.tableView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor),
+            self.tableView.leftAnchor.constraint(equalTo: self.view.leftAnchor),
+            self.tableView.rightAnchor.constraint(equalTo: self.view.rightAnchor),
+        ]
+        NSLayoutConstraint.activate(tableViewContraints)
+    }
+}
+
+extension SearchRepositoryViewController: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+        Debug.print(self.repos?.repos[indexPath.row].fullName)
+    }
+}
+
+extension SearchRepositoryViewController: UITableViewDataSource {
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return 1
+    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return self.repos?.repos.count ?? 0
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        return UITableViewCell()
+    }
+
+}
 
 // MARK: - request data from SearchRepositoryInteractor
 extension SearchRepositoryViewController {
-    func doSomeThing() {
+    func requestSearchRepos() {
         let request = SearchRepository.Search.Request(query: "rxSwift", page: 1)
         interactor?.fetchRepos(request: request)
     }
@@ -103,9 +120,29 @@ extension SearchRepositoryViewController {
 
 // MARK: - display view model from SearchRepositoryPresenter
 extension SearchRepositoryViewController {
-    func displayResult(viewModel: SearchRepository.Search.ViewModel) {
+    func displayFetchOrderResult(viewModel: SearchRepository.Search.ViewModel) {
         if let repos = viewModel.repos {
             Debug.print(repos)
+//            self.tableView.reloadData()
+            let currentReposCount = self.repos?.repos.count ?? 0
+            DispatchQueue.main.async { [weak self] in
+                guard let self = self else { return }
+                if repos.currentPageIndex == 1 {
+                    self.repos = repos
+                    self.tableView.reloadData()
+                }
+                else {
+                    let newRepos: [IndexPath] = (0..<repos.repos.count).map({ el -> IndexPath in
+                        let index = (currentReposCount + el)
+                        return IndexPath(row: index, section: 0)
+                    })
+                    self.repos?.repos.append(contentsOf: repos.repos)
+                    self.tableView.beginUpdates()
+                    self.tableView.insertRows(at: newRepos, with: .fade)
+                    self.tableView.endUpdates()
+                }
+                
+            }
         }
         
     }

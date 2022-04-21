@@ -16,7 +16,7 @@ protocol SearchRepositoryDataStore {
 
 class SearchRepositoryInteractor: SearchRepositoryBusinessLogic, SearchRepositoryDataStore {
     var presenter: SearchRepositoryPresentationLogic?
-    var worker: SearchRepositoryWorker?
+    var worker: SearchRepositoryWorker? = SearchRepositoryWorker(network: GitHubAPI())
     //var name: String = ""
 
     deinit {
@@ -25,8 +25,8 @@ class SearchRepositoryInteractor: SearchRepositoryBusinessLogic, SearchRepositor
     // MARK: Do something (and send response to SearchRepositoryPresenter)
 
     func fetchRepos(request: SearchRepository.Search.Request) {
-        worker = SearchRepositoryWorker()
-        worker?.fetchRepository(name: request.query, page: request.page, completion: { [weak self] result in
+
+        worker?.fetchRepository(name: request.query, page: request.page, completionHandler: { [weak self] result in
             switch result {
                 case let .success(repo):
                     let response = SearchRepository.Search.Response(repos: repo)

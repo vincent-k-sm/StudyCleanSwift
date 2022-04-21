@@ -24,7 +24,7 @@ class SearchRepositoryPresenter: SearchRepositoryPresentationLogic {
     func presentFetchReposResult(response: SearchRepository.Search.Response) {
         
         let viewModel = SearchRepository.Search.ViewModel(repos: response.repos, error: nil)
-        viewController?.displayResult(viewModel: viewModel)
+        viewController?.displayFetchOrderResult(viewModel: viewModel)
         
     }
     

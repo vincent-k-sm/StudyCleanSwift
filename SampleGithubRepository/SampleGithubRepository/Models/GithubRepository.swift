@@ -8,13 +8,13 @@ import Foundation
 struct Repositories: Codable {
     let totalCount: Int
     let incompleteResults: Bool
-    let currentPageIndex: Int
+    var currentPageIndex: Int
     let nextPage: Int?
-    let repos: [Repository]
+    var repos: [Repository]
 
 }
 
-struct Repository: Codable {
+struct Repository: Codable, Equatable {
     let id: Int
     let avatarURL: String
     let url: String
