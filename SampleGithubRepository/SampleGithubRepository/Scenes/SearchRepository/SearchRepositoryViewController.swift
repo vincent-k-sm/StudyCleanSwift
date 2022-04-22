@@ -57,6 +57,7 @@ class SearchRepositoryViewController: UIViewController, SearchRepositoryDisplayL
         let v = UITableView()
         v.delegate = self
         v.dataSource = self
+        v.registerCell(type: SearchRepositoryTableViewCell.self)
         return v
     }()
     
@@ -64,7 +65,7 @@ class SearchRepositoryViewController: UIViewController, SearchRepositoryDisplayL
         super.viewDidLoad()
         Debug.print("")
         self.setUI()
-//        self.requestSearchRepos()
+        self.requestSearchRepos()
     }
 }
 
@@ -89,6 +90,22 @@ extension SearchRepositoryViewController {
 }
 
 extension SearchRepositoryViewController: UITableViewDelegate {
+    
+    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        guard let repos = self.repos?.repos else { return }
+        if indexPath.row == (repos.count - 3) {
+            self.requestSearchRepos()
+        }
+    }
+    
+    func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 80
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return UITableView.automaticDimension
+    }
+    
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
         Debug.print(self.repos?.repos[indexPath.row].fullName)
@@ -105,7 +122,16 @@ extension SearchRepositoryViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        return UITableViewCell()
+        var cell = UITableViewCell()
+        guard let customCell = tableView.dequeueCell(withType: SearchRepositoryTableViewCell.self) as? SearchRepositoryTableViewCell else {
+            return cell
+        }
+        if let item = self.repos?.repos[indexPath.row] {
+            customCell.set(model: item)
+        }
+        customCell.thumbnailImageView.accessibilityLabel = "image \(String(indexPath.row))"
+        cell = customCell
+        return cell
     }
 
 }
@@ -113,7 +139,7 @@ extension SearchRepositoryViewController: UITableViewDataSource {
 // MARK: - request data from SearchRepositoryInteractor
 extension SearchRepositoryViewController {
     func requestSearchRepos() {
-        let request = SearchRepository.Search.Request(query: "rxSwift", page: 1)
+        let request = SearchRepository.Search.Request(query: "rxSwift", page: self.repos?.nextPage ?? 1)
         interactor?.fetchRepos(request: request)
     }
 }
@@ -137,6 +163,7 @@ extension SearchRepositoryViewController {
                         return IndexPath(row: index, section: 0)
                     })
                     self.repos?.repos.append(contentsOf: repos.repos)
+                    self.repos?.nextPage = repos.nextPage
                     self.tableView.beginUpdates()
                     self.tableView.insertRows(at: newRepos, with: .fade)
                     self.tableView.endUpdates()

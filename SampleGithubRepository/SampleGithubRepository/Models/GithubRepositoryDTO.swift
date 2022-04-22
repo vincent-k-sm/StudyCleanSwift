@@ -15,6 +15,13 @@ struct RepositoriesDTO: Codable {
         case incompleteResults = "incomplete_results"
         case items
     }
+    
+//    init(from decoder: Decoder) throws {
+//        let container = try decoder.container(keyedBy: CodingKeys.self)
+//        totalCount = try container.decodeIfPresent(Int.self, forKey: .totalCount) ?? 0
+//        incompleteResults = try container.decodeIfPresent(Bool.self, forKey: .incompleteResults) ?? false
+//        items = try container.decodeIfPresent([RepositoryDTO].self, forKey: .items) ?? []
+//    }
 }
 
 struct RepositoryDTO: Codable {
@@ -23,7 +30,7 @@ struct RepositoryDTO: Codable {
     let itemPrivate: Bool
     let owner: Owner
     let htmlURL: String
-    let itemDescription: String
+    let itemDescription: String?
     let fork: Bool
     let url, forksURL: String
     let keysURL, collaboratorsURL: String
@@ -60,7 +67,7 @@ struct RepositoryDTO: Codable {
     let topics: [String]
     let visibility: Visibility
     let forks, openIssues, watchers: Int
-    let defaultBranch: DefaultBranch
+//    let defaultBranch: DefaultBranch?
     let score: Int
 
     enum CodingKeys: String, CodingKey {
@@ -131,16 +138,16 @@ struct RepositoryDTO: Codable {
         case topics, visibility, forks
         case openIssues = "open_issues"
         case watchers
-        case defaultBranch = "default_branch"
+//        case defaultBranch = "default_branch"
         case score
     }
 }
 
-enum DefaultBranch: String, Codable {
-    case develop = "develop"
-    case main = "main"
-    case master = "master"
-}
+//enum DefaultBranch: String, Codable {
+//    case develop = "develop"
+//    case main = "main"
+//    case master = "master"
+//}
 
 enum Language: String, Codable {
     case c = "C"

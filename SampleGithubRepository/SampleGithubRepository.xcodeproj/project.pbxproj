@@ -24,6 +24,10 @@
 		4DB166C92810D4860024F368 /* SearchRepositoryWorkerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DB166C52810D4860024F368 /* SearchRepositoryWorkerTests.swift */; };
 		4DB166CA2810D4860024F368 /* SearchRepositoryPresenterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DB166C62810D4860024F368 /* SearchRepositoryPresenterTests.swift */; };
 		4DB166CF2810E6140024F368 /* GitHubAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DB166CE2810E6140024F368 /* GitHubAPI.swift */; };
+		4DB166D4281107E60024F368 /* SearchRepositoryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DB166D3281107E60024F368 /* SearchRepositoryTableViewCell.swift */; };
+		4DB166D82811083C0024F368 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 4DB166D72811083C0024F368 /* SnapKit */; };
+		4DB166DA281109600024F368 /* SearchRepositoryTableViewCellModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DB166D9281109600024F368 /* SearchRepositoryTableViewCellModel.swift */; };
+		4DB166DF28126C200024F368 /* SearchRepositoryTableViewCellTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DB166DE28126C200024F368 /* SearchRepositoryTableViewCellTests.swift */; };
 		4DD53E502810579F00F3682D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DD53E4F2810579F00F3682D /* AppDelegate.swift */; };
 		4DD53E522810579F00F3682D /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DD53E512810579F00F3682D /* SceneDelegate.swift */; };
 		4DD53E59281057A000F3682D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4DD53E58281057A000F3682D /* Assets.xcassets */; };
@@ -59,6 +63,9 @@
 		4DB166C52810D4860024F368 /* SearchRepositoryWorkerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchRepositoryWorkerTests.swift; sourceTree = "<group>"; };
 		4DB166C62810D4860024F368 /* SearchRepositoryPresenterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchRepositoryPresenterTests.swift; sourceTree = "<group>"; };
 		4DB166CE2810E6140024F368 /* GitHubAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GitHubAPI.swift; sourceTree = "<group>"; };
+		4DB166D3281107E60024F368 /* SearchRepositoryTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchRepositoryTableViewCell.swift; sourceTree = "<group>"; };
+		4DB166D9281109600024F368 /* SearchRepositoryTableViewCellModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchRepositoryTableViewCellModel.swift; sourceTree = "<group>"; };
+		4DB166DE28126C200024F368 /* SearchRepositoryTableViewCellTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchRepositoryTableViewCellTests.swift; sourceTree = "<group>"; };
 		4DD53E4C2810579F00F3682D /* SampleGithubRepository.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SampleGithubRepository.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4DD53E4F2810579F00F3682D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4DD53E512810579F00F3682D /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -80,6 +87,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				4DB166942810646C0024F368 /* MKUtils in Frameworks */,
+				4DB166D82811083C0024F368 /* SnapKit in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -130,6 +138,7 @@
 		4DB166962810655D0024F368 /* SearchRepository */ = {
 			isa = PBXGroup;
 			children = (
+				4DB166D2281107D30024F368 /* Cells */,
 				4DB166A3281067C30024F368 /* SearchRepositoryPresenter.swift */,
 				4DB166A4281067C30024F368 /* SearchRepositoryWorker.swift */,
 				4DB166A5281067C30024F368 /* SearchRepositoryRouter.swift */,
@@ -165,6 +174,7 @@
 				4DB166C42810D4860024F368 /* SearchRepositoryInteractorTests.swift */,
 				4DB166C52810D4860024F368 /* SearchRepositoryWorkerTests.swift */,
 				4DB166C62810D4860024F368 /* SearchRepositoryPresenterTests.swift */,
+				4DB166DE28126C200024F368 /* SearchRepositoryTableViewCellTests.swift */,
 			);
 			path = SearchRepository;
 			sourceTree = "<group>";
@@ -183,6 +193,15 @@
 				4DB166CE2810E6140024F368 /* GitHubAPI.swift */,
 			);
 			path = Network;
+			sourceTree = "<group>";
+		};
+		4DB166D2281107D30024F368 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				4DB166D3281107E60024F368 /* SearchRepositoryTableViewCell.swift */,
+				4DB166D9281109600024F368 /* SearchRepositoryTableViewCellModel.swift */,
+			);
+			path = Cells;
 			sourceTree = "<group>";
 		};
 		4DD53E432810579F00F3682D = {
@@ -264,6 +283,7 @@
 			name = SampleGithubRepository;
 			packageProductDependencies = (
 				4DB166932810646C0024F368 /* MKUtils */,
+				4DB166D72811083C0024F368 /* SnapKit */,
 			);
 			productName = SampleGithubRepository;
 			productReference = 4DD53E4C2810579F00F3682D /* SampleGithubRepository.app */;
@@ -297,6 +317,9 @@
 				Base,
 			);
 			mainGroup = 4DD53E432810579F00F3682D;
+			packageReferences = (
+				4DB166D62811083C0024F368 /* XCRemoteSwiftPackageReference "SnapKit" */,
+			);
 			productRefGroup = 4DD53E4D2810579F00F3682D /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -335,6 +358,7 @@
 				4DB166C72810D4860024F368 /* SearchRepositoryViewControllerTests.swift in Sources */,
 				4DB166C92810D4860024F368 /* SearchRepositoryWorkerTests.swift in Sources */,
 				4DB166C82810D4860024F368 /* SearchRepositoryInteractorTests.swift in Sources */,
+				4DB166DF28126C200024F368 /* SearchRepositoryTableViewCellTests.swift in Sources */,
 				4DB166CA2810D4860024F368 /* SearchRepositoryPresenterTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -350,12 +374,14 @@
 				4DB166CF2810E6140024F368 /* GitHubAPI.swift in Sources */,
 				4DB166AC281067C30024F368 /* SearchRepositoryModels.swift in Sources */,
 				4DB166B5281077490024F368 /* APIError.swift in Sources */,
+				4DB166DA281109600024F368 /* SearchRepositoryTableViewCellModel.swift in Sources */,
 				4DB166AA281067C30024F368 /* SearchRepositoryWorker.swift in Sources */,
 				4DB1669028105ABF0024F368 /* Bundle+.swift in Sources */,
 				4DD53E502810579F00F3682D /* AppDelegate.swift in Sources */,
 				4DD53E522810579F00F3682D /* SceneDelegate.swift in Sources */,
 				4DB166AE281067C30024F368 /* SearchRepositoryInteractor.swift in Sources */,
 				4DB166A9281067C30024F368 /* SearchRepositoryPresenter.swift in Sources */,
+				4DB166D4281107E60024F368 /* SearchRepositoryTableViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -617,10 +643,26 @@
 		};
 /* End XCConfigurationList section */
 
+/* Begin XCRemoteSwiftPackageReference section */
+		4DB166D62811083C0024F368 /* XCRemoteSwiftPackageReference "SnapKit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SnapKit/SnapKit";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
 /* Begin XCSwiftPackageProductDependency section */
 		4DB166932810646C0024F368 /* MKUtils */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = MKUtils;
+		};
+		4DB166D72811083C0024F368 /* SnapKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 4DB166D62811083C0024F368 /* XCRemoteSwiftPackageReference "SnapKit" */;
+			productName = SnapKit;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

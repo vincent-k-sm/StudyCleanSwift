@@ -13,7 +13,7 @@ class GitHubAPI: SearchRepositoryWorkerProtocol {
     func fetchRepository(name: String, page: Int, completion: @escaping (Result<Repositories, Error>) -> Void) {
 
         let perPage = 30
-        let endpoint = String.init(format: "https://api.github.com/search/repositories?q=%@&page=%dper_page=%d", name, page, perPage)
+        let endpoint = String.init(format: "https://api.github.com/search/repositories?q=%@&page=%d", name, page)
         let urlString = endpoint.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) ?? endpoint
         guard let url = URL(string: urlString) else {return}
         let session = URLSession(configuration: .default)
@@ -27,7 +27,7 @@ class GitHubAPI: SearchRepositoryWorkerProtocol {
                             avatarURL: el.owner.avatarURL,
                             url: el.htmlURL,
                             fullName: el.fullName,
-                            description: el.itemDescription,
+                            description: el.itemDescription ?? "",
                             starCount: el.stargazersCount,
                             watcherCount: el.watchersCount,
                             forkCount: el.forksCount
